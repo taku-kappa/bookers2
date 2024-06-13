@@ -6,11 +6,48 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "Bookers", root %>
+        </li>
+        <li>
+          <%= link_to "Home", root %>
+        </li>
+        <li>
+          <%= link_to "About", root %>
+        </li>
+        <li>
+          <%= link_to "Sign up", new_user_registration %>
+        </li>
+        <li>
+          <%= link_to "Log in", new_user_session %>
+        </li>
+      <% else %>
+         <li>
+          <%= link_to "Bookers", root %>
+        </li>
+        <li>
+          <%= link_to "Home", root %>
+        </li>
+        <li>
+          <%= link_to "Users", users %>
+        </li>
+        <li>
+          <%= link_to "Books", books %>
+        </li>
+        <li>
+          <%= link_to "Log out", destroy_user_session, method: :delete %>
+        </li>
+      <% end %>
+    </header>
+
+
     <%= yield %>
   </body>
 </html>

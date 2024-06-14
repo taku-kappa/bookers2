@@ -12,42 +12,52 @@
 
   <body>
     <header>
+
       <% if user_signed_in? %>
-        <li>
-          <%= link_to "Bookers", root %>
-        </li>
-        <li>
-          <%= link_to "Home", root %>
-        </li>
-        <li>
-          <%= link_to "About", root %>
-        </li>
-        <li>
-          <%= link_to "Sign up", new_user_registration %>
-        </li>
-        <li>
-          <%= link_to "Log in", new_user_session %>
-        </li>
+         <span>
+          <%= link_to "Bookers", root_path %>
+        </span>
+        <span>
+          <%= link_to "Home", user_path(current_user.id) %>
+        </span>
+        <span>
+          <%= link_to "Users", users_path %>
+        </span>
+        <span>
+          <%= link_to "Books", books_path %>
+        </span>
+        <span>
+          <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+        </span>
       <% else %>
-         <li>
-          <%= link_to "Bookers", root %>
-        </li>
-        <li>
-          <%= link_to "Home", root %>
-        </li>
-        <li>
-          <%= link_to "Users", users %>
-        </li>
-        <li>
-          <%= link_to "Books", books %>
-        </li>
-        <li>
-          <%= link_to "Log out", destroy_user_session, method: :delete %>
-        </li>
+         <span>
+          <%= link_to "Bookers", root_path %>
+        </span>
+        <span>
+          <%= link_to "Home", root_path %>
+        </span>
+        <span>
+          <%= link_to "About", about_path %>
+        </span>
+        <span>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </span>
+        <span>
+          <%= link_to "Log in", new_user_session_path %>
+        </span>
       <% end %>
     </header>
 
-
     <%= yield %>
+
+        <footer>
+      <div>
+        <div>
+          <div>
+            <p>Copy Right Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

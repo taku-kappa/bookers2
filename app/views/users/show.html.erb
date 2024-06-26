@@ -1,28 +1,37 @@
 <!--User info部分--><!--New book部分-->
-<%= render 'books/list', user: @user, book: @book %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'books/list', user: @user, book: @book %>
+    </div>
 
-<h2>Books</h2>
-<table>
-  <tr>
-    <th></th>
-    <th>Title</th>
-    <th>Opinion</th>
-  </tr>
-  <% @books.each do |book| %>
-  <tr>
-    <td>
-      <%= link_to user_path(book.user.id) do %>
-        <%= image_tag book.user.get_profile_image %>
-      <% end %>
-    </td>
-    <td>
-      <%= link_to book_path(book.id) do %>
-        <%= book.title %>
-      <% end %>
-    </td>
-    <td>
-      <%= book.body %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+<!--右側のBooks部分-->
+    <div class="col-md-offset-1 col-md-8">
+      <h2>Books</h2>
+      <table class="table">
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+        </tr>
+        <% @books.each do |book| %>
+        <tr>
+          <td>
+            <%= link_to user_path(book.user.id) do %>
+              <%= image_tag book.user.get_profile_image, :size => '80x80' %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+            <% end %>
+          </td>
+          <td>
+            <%= book.body %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

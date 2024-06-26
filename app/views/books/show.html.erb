@@ -1,28 +1,36 @@
-<%= render 'list', user: @user, book: @book %>
 
-<!--右側投稿内容部分-->
-<h2>Book detail</h2>
-<table>
-    <tr>
-        <td>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'list', user: @user, book: @book %>
+    </div>
+    <!--右側投稿内容部分-->
+    <div class="col-md-offset-1 col-md-8">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tr>
+          <td>
             <%= link_to users_path(@booker.user.id) do %>
-                <%= image_tag @booker.user.get_profile_image %><br>
-                <%= @booker.user.name %>
+              <%= image_tag @booker.user.get_profile_image, :size => "100x100" %><br>
+              <%= @booker.user.name %>
             <% end %>
-        </td>
-        <td>
+          </td>
+          <td>
             <%= @booker.title %>
-        </td>
-        <td>
+          </td>
+          <td>
             <%= @booker.body %>
-        </td>
-    <% if @booker.user == current_user %>
-        <td>
-            <%= link_to "Edit", edit_book_path(@booker) %>
-        </td>
-        <td>
-            <%= link_to "Destroy", book_path(@booker), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        </td>
-    <% end %>
-    </tr>
-</table>
+          </td>
+        <% if @booker.user == current_user %>
+          <td>
+            <%= link_to "Edit", edit_book_path(@booker), class: "btn btn-success" %>
+          </td>
+          <td>
+            <%= link_to "Destroy", book_path(@booker), class: "btn btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' } %>
+          </td>
+        <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

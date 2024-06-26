@@ -1,31 +1,37 @@
 <!--User info部分--><!--New book部分-->
-<%= render 'list', user: @user, book: @book %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'list', user: @user, book: @book %>
+    </div>
 
 <!--右側の投稿一覧部分-->
-<h2>Books</h2>
-
-<table>
-    <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Opinion</th>
-    </tr>
-    <% @books.each do |book| %>
-    <tr>
-        <td>
+    <div class="col-md-offset-1 col-md-8">
+      <h2>Books</h2>
+      <table>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+        </tr>
+        <% @books.each do |book| %>
+        <tr>
+          <td>
             <%= link_to user_path(book.user.id) do %>
-                <%= image_tag book.user.get_profile_image %>
+              <%= image_tag book.user.get_profile_image %>
             <% end %>
-        </td>
-        <td>
+          </td>
+          <td>
             <%= link_to book_path(book.id) do %>
-                <%= book.title %>
+              <%= book.title %>
             <% end %>
-        </td>
-        <td>
+          </td>
+          <td>
             <%= book.body %>
-        </td>
-    </tr>
-    <% end %>
-</table>
-
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

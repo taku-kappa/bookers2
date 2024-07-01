@@ -10,7 +10,7 @@
       <table class="table">
         <tr>
           <td>
-            <%= link_to users_path(@booker.user.id) do %>
+            <%= link_to user_path(@booker.user.id) do %>
               <%= image_tag @booker.user.get_profile_image, :size => "100x100" %><br>
               <%= @booker.user.name %>
             <% end %>
